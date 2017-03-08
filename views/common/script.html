@@ -1,5 +1,22 @@
-<script src="/views/public/assets/jquery/jquery.min.js"></script>
-<script src="/views/public/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="/views/public/assets/nprogress/nprogress.js"></script>
-<script src="/views/public/assets/jQuery-cookie/jQuery.cookie.js"></script>
-<script src="/views/public/js/common.js"></script>
+<script src="/views/public/assets/require/require.js"></script>
+
+<script>
+    require.config({
+        baseUrl:'/views/public/assets/',
+        paths:{
+            "jquery":"jquery/jquery.min",
+            "cookie":"jquery-cookie/jquery.cookie",
+            "bootstrap":"bootstrap/js/bootstrap",
+            "template":"artTemplate/template-native",
+            "common":"../js/dashboard/common",
+            "login":"../js/dashboard/login"
+        },
+        shim:{
+            "bootstrap":{
+                deps:["jquery"]
+            }
+        }
+    })
+
+    require(["common"])
+</script>
