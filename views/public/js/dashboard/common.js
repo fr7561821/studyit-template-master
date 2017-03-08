@@ -9,6 +9,19 @@ define(['jquery', 'cookie', 'template'], function ($, ck, template) {
         var html = template("avatar", tcInfo);
         $(".aside>.profile").html(html);
     }
+
+    $("#logoutBtn").on("click", function () {
+        //退出功能
+        $.ajax({
+            url: "/api/logout",
+            type: "POST",
+            success: function (info) {
+                if (info.code == 200) {
+                    location.href = "/login";
+                }
+            }
+        })
+    })
 })
 
 
